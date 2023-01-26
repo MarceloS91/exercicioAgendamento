@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/login">
+
+    <fragment
+        android:id="@+id/login"
+        android:name="com.example.exercicioagendamento.View.ScreenLogin"
+        android:label="FirstScreen"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/actionScreenLoginToScreenLogar"
+            app:destination="@id/logar" />
+        <action
+            android:id="@+id/actionScreenLoginToScreenCadastro"
+            app:destination="@id/cadastro" />
+    </fragment>
+    <fragment
+        android:id="@+id/logar"
+        android:name="com.example.exercicioagendamento.View.ScreenLogar"
+        android:label="fragment_second_screen"
+        tools:layout="@layout/fragment_logar" >
+        <action
+            android:id="@+id/actionScreenLogarToScreenEscolherServico"
+            app:destination="@id/escolherServico" />
+    </fragment>
+    <fragment
+        android:id="@+id/cadastro"
+        android:name="com.example.exercicioagendamento.View.ScreenCadastro"
+        android:label="fragment_thirt_screem"
+        tools:layout="@layout/fragment_cadastro" >
+        <action
+            android:id="@+id/actionScreenCadastroToScreenEscolherServico"
+            app:destination="@id/escolherServico" />
+    </fragment>
+    <fragment
+        android:id="@+id/escolherServico"
+        android:name="com.example.exercicioagendamento.View.ScreenEscolherServico"
+        android:label="fragment_fifth_screen"
+        tools:layout="@layout/fragment_escolherservico" >
+        <action
+            android:id="@+id/actionScreenEscolherServicoToScreenDetalhesServico"
+            app:destination="@id/detalhesServico" />
+        <argument
+            android:name="nickname"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalhesServico"
+        android:name="com.example.exercicioagendamento.View.ScreenDetalhesServico"
+        android:label="fragment_medium_cadastro"
+        tools:layout="@layout/fragment_detalhesservico" >
+        <action
+            android:id="@+id/actionScreenDetalheServicoToAgendamentoConcluido"
+            app:destination="@id/agendamentoConcluido" />
+        <argument
+            android:name="levelId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/agendamentoConcluido"
+        android:name="com.example.exercicioagendamento.View.ScreenAgendamentoConcluido"
+        android:label="fragment_agendamento_concluido"
+        tools:layout="@layout/fragment_agendamento_concluido" >
+        <action
+            android:id="@+id/actionAgendamentoConcluidoTohistoricoAgendamentos"
+            app:destination="@id/historicoAgendamentos" />
+    </fragment>
+    <fragment
+        android:id="@+id/historicoAgendamentos"
+        android:name="com.example.exercicioagendamento.View.ScreenHistoricoAgendamento"
+        android:label="fragment_historico_agendamentos"
+        tools:layout="@layout/fragment_historico_agendamentos" >
+        <action
+            android:id="@+id/actionScreenHistoricoAgendamentosToScreenNovoServico"
+            app:destination="@id/screenNovoServico" />
+    </fragment>
+    <fragment
+        android:id="@+id/screenNovoServico"
+        android:name="com.example.exercicioagendamento.View.ScreenNovoServico"
+        android:label="fragment_screen_novo_servico"
+        tools:layout="@layout/fragment_screen_novo_servico" >
+        <action
+            android:id="@+id/actionScreenNovoServicoToDetalhesServico"
+            app:destination="@id/detalhesServico" />
+    </fragment>
+</navigation>
