@@ -15,8 +15,11 @@ object FakeObj {
         dbObj.list.remove(agendamento)
     }
 
-    fun uptadeAgendamento(agendamento: Model, agendamentoAtualizado: Model) {
-
+    fun uptadeAgendamento(agendamentoAtualizado: Model) {
+        dbObj.list.find { it.id == agendamentoAtualizado.id }?.let {
+            dbObj.list.remove(it)
+        }
+        addAgendamento(agendamentoAtualizado)
     }
 
     fun getAgendamento() = dbObj.list

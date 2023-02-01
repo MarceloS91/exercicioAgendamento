@@ -17,8 +17,6 @@ class ListViewModel : ViewModel() {
        agendamento.value =  agendamentoDataSource.getAgendamento(context)
     }
 
-/*    fun updateAgendamento()*/
-
     fun deleteAgendamento(
         agendamento: Model,
         context: Activity

@@ -2,15 +2,16 @@ package com.example.exercicioagendamento.View
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.exercicioagendamento.R
 import com.example.exercicioagendamento.Adapter.AdapterAgendamento
+import com.example.exercicioagendamento.Database.FakeObj
 import com.example.exercicioagendamento.List.ListViewModel
+import com.example.exercicioagendamento.R
 import com.example.exercicioagendamento.databinding.FragmentHistoricoAgendamentosBinding
 
 class ScreenHistoricoAgendamento : Fragment(R.layout.fragment_historico_agendamentos) {
@@ -27,9 +28,16 @@ class ScreenHistoricoAgendamento : Fragment(R.layout.fragment_historico_agendame
 
         viewModel.loadAgendamento(requireActivity())
 
-        agendamentoAdapter = AdapterAgendamento { agendamento ->
-            viewModel.deleteAgendamento(agendamento = agendamento, context = requireActivity())
-        }
+        agendamentoAdapter = AdapterAgendamento(
+            onClickDelete = { agendamento ->
+                viewModel.deleteAgendamento(agendamento = agendamento, context = requireActivity())
+            },
+             onClickSave = { agendamentoAtualizado ->
+                 FakeObj.uptadeAgendamento(
+                     agendamentoAtualizado
+                )
+            }
+        )
     }
 
     override fun onCreateView(

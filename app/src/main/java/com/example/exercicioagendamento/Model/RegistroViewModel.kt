@@ -4,6 +4,7 @@ import android.app.Activity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.exercicioagendamento.DataSource.AgendamentoDT
+import kotlin.random.Random
 
 class RegistroViewModel : ViewModel() {
 
@@ -22,6 +23,7 @@ class RegistroViewModel : ViewModel() {
         agendamentoDT.addAgendamento(
             context = context,
             agendamento = Model(
+                id = Random.nextInt(),
                 nomeLayout = nomeParaAgendar,
                 enderecoLayout = enderecoParaAgendar,
                 dataLayout = dataParaAgendar,

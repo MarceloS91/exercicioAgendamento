@@ -4,6 +4,7 @@ import android.widget.EditText
 
 class Model(
 
+    val id: Int,
     val nomeLayout: String,
     val enderecoLayout: String,
     val dataLayout: String,
